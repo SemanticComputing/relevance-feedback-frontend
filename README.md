@@ -1,6 +1,4 @@
-# JSON-LD Generator
-
-Finnish JSON-LD markup generator
+# Relevance Feedback Frontend
 
 ## Run
 
