@@ -10,7 +10,7 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, search}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    return doSearch({ query: search.query });
+    return doSearch(search);
   };
 
   return (

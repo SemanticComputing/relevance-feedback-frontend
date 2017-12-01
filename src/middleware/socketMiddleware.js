@@ -28,7 +28,13 @@ const socketMiddleware = (() => {
           socket.on('search_status_msg', onMessage('SEARCH_STATUS_MSG', store));
           socket.on('search_ready', onMessage('SEARCH_READY', store));
         }
-        socket.emit('search', { data: action.search.query });
+        socket.emit('search', {
+          data: {
+            query: action.search.query,
+            thumbs: action.search.thumbs,
+            result_id: action.search.results.result_id
+          }
+        });
         break;
 
       //This action is irrelevant to us, pass it on to the next middleware
