@@ -3,17 +3,15 @@ import { object, func } from 'prop-types';
 import { Row, Col, Button } from 'reactstrap';
 import FontAwesome from 'react-fontawesome';
 
-const Result = ({ result, thumb, updateThumb }) => {
-  const handleThumbsUp = () => updateThumb({ url: result.url, value: true });
-  const handleThumbsDown = () => updateThumb({ url: result.url, value: false });
+const Result = ({ result, updateThumb }) => {
+  const handleThumbsUp = () => updateThumb({ result, value: true });
+  const handleThumbsDown = () => updateThumb({ result, value: false });
   let thumbsUpStyle = {};
   let thumbsDownStyle = {};
-  if (thumb) {
-    if (thumb.value) {
-      thumbsUpStyle.color = 'green';
-    } else {
-      thumbsDownStyle.color = 'red';
-    }
+  if (result.thumb === true) {
+    thumbsUpStyle.color = 'green';
+  } else if (result.thub === false) {
+    thumbsDownStyle.color = 'red';
   }
   return (
     <Row>
@@ -37,7 +35,6 @@ const Result = ({ result, thumb, updateThumb }) => {
 
 Result.propTypes = {
   result: object,
-  thumb: object,
   updateThumb: func
 };
 

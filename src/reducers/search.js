@@ -1,15 +1,13 @@
 const INITIAL_STATE = {
   query: '',
   status: '',
-  results: {},
-  thumbs: {}
+  results: {}
 };
 
 const updateThumb = (state, action) => {
-  let thumbs = {};
-  thumbs[action.thumb.url] = action.thumb;
-  thumbs = Object.assign({}, state.thumbs, thumbs);
-  return Object.assign({}, state, { thumbs });
+  let result = Object.assign({}, action.thumb.result, { thumb: action.thumb.value });
+  let results = Object.assign({}, state.results, { [result.url]: result });
+  return Object.assign({}, state, { results });
 };
 
 const search = (state = INITIAL_STATE, action) => {

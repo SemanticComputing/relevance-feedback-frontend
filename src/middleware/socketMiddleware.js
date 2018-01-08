@@ -31,7 +31,6 @@ const socketMiddleware = (() => {
         socket.emit('search', {
           data: {
             query: action.search.query,
-            thumbs: action.search.thumbs,
             result_id: action.search.results.result_id
           }
         });

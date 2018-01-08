@@ -33,7 +33,7 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, search}) => {
           {search.status}
         </Col>
       </Row>
-      <Results results={search.results.items} thumbs={search.thumbs} updateThumb={updateThumb} />
+      <Results results={search.results.items} updateThumb={updateThumb} />
     </Container>
   );
 };
