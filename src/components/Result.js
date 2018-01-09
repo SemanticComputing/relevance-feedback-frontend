@@ -10,7 +10,7 @@ const Result = ({ result, updateThumb }) => {
   let thumbsDownStyle = {};
   if (result.thumb === true) {
     thumbsUpStyle.color = 'green';
-  } else if (result.thub === false) {
+  } else if (result.thumb === false) {
     thumbsDownStyle.color = 'red';
   }
   return (
