@@ -20,7 +20,7 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, search}) => {
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Label for='search'>Haku</Label>
-              <TextInput id='search' value={search.query} placeholder='Haku' onChange={(query) => updateQuery({ query })} />
+              <TextInput id='search' value={search.query} placeholder='Haku' onChange={(query) => updateQuery(query)} />
             </FormGroup>
             <FormGroup>
               <Button type="submit">Hae</Button>
