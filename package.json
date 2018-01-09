@@ -27,10 +27,15 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.12.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jasmine": "^2.9.1",
+    "eslint-plugin-jest": "^21.6.0",
     "eslint-plugin-react": "^7.5.1",
     "gh-pages": "^1.1.0",
+    "react-test-renderer": "^16.2.0",
     "redux-devtools": "^3.4.1"
   }
 }

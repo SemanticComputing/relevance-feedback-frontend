@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`indicates a thumb down 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-sm-8 col"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <a
+          href="http://example.fi"
+        >
+          title
+        </a>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        description
+      </div>
+    </div>
+  </div>
+  <div
+    className="col-sm-2 col"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden={true}
+            className="fa fa-thumbs-up fa-2x thumbs thumbs-up"
+            style={Object {}}
+          />
+        </button>
+      </div>
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden={true}
+            className="fa fa-thumbs-down fa-2x thumbs thumbs-down"
+            style={
+              Object {
+                "color": "red",
+              }
+            }
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`indicates a thumb up 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-sm-8 col"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <a
+          href="http://example.fi"
+        >
+          title
+        </a>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        description
+      </div>
+    </div>
+  </div>
+  <div
+    className="col-sm-2 col"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden={true}
+            className="fa fa-thumbs-up fa-2x thumbs thumbs-up"
+            style={
+              Object {
+                "color": "green",
+              }
+            }
+          />
+        </button>
+      </div>
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden={true}
+            className="fa fa-thumbs-down fa-2x thumbs thumbs-down"
+            style={Object {}}
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a result 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-sm-8 col"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <a
+          href="http://example.fi"
+        >
+          title
+        </a>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        description
+      </div>
+    </div>
+  </div>
+  <div
+    className="col-sm-2 col"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden={true}
+            className="fa fa-thumbs-up fa-2x thumbs thumbs-up"
+            style={Object {}}
+          />
+        </button>
+      </div>
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden={true}
+            className="fa fa-thumbs-down fa-2x thumbs thumbs-down"
+            style={Object {}}
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

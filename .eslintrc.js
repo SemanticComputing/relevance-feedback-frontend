@@ -23,12 +23,15 @@ module.exports = {
   "env": {
     "es6": true,
     "node": true,
-    "browser": true
+    "browser": true,
+    "jasmine": true,
+    "jest/globals": true
   },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:import/errors"
+    "plugin:import/errors",
+    "plugin:jasmine/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -38,6 +41,8 @@ module.exports = {
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "jasmine",
+    "jest"
   ]
 };
