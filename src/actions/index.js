@@ -13,6 +13,11 @@ export const updateResults = (results) => ({
   results
 });
 
+export const updateWords = (words) => ({
+  type: 'UPDATE_WORDS',
+  words
+});
+
 export const updateThumb = (thumb) => ({
   type: 'UPDATE_THUMB',
   thumb

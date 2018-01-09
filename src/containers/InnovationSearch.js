@@ -5,6 +5,7 @@ import Results from '../components/Results';
 import { updateQuery, updateThumb, doSearch } from '../actions';
 import { object, func } from 'prop-types';
 import { Container, Row, Col, Form, FormGroup, Label, Button } from 'reactstrap';
+import _ from 'lodash';
 
 let InnovationSearch = ({ updateQuery, doSearch, updateThumb, search}) => {
 
@@ -31,6 +32,11 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, search}) => {
       <Row>
         <Col className="col-sm-12">
           {search.status}
+        </Col>
+      </Row>
+      <Row>
+        <Col className="col-sm-12">
+          {_.join(search.searchWords, ', ')}
         </Col>
       </Row>
       <Results results={search.results.items} updateThumb={updateThumb} />
