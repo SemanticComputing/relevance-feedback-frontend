@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displays the query 1`] = `
+<form
+  className=""
+  onSubmit={[Function]}
+>
+  <div
+    className="form-group"
+  >
+    <label
+      className=" form-control-label"
+      htmlFor="search"
+    >
+      Haku
+    </label>
+    <input
+      className="form-control"
+      onChange={[Function]}
+      placeholder="Haku"
+      type="text"
+      value="query"
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <button
+      className="btn btn-secondary"
+      onClick={[Function]}
+      type="submit"
+    >
+      Hae
+    </button>
+  </div>
+</form>
+`;
