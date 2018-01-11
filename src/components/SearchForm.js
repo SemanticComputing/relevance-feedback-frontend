@@ -17,7 +17,7 @@ const SearchForm = ({ updateQuery, doSearch, search }) => {
         <TextInput id='search' value={search.query} placeholder='Haku' onChange={updateQuery} />
       </FormGroup>
       <FormGroup>
-        <Button type="submit">Hae</Button>
+        <Button disabled={search.disabled} type="submit">Hae</Button>
       </FormGroup>
     </Form>
   );
