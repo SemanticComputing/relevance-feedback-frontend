@@ -2,7 +2,6 @@
   "name": "relevance-feedback-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://semanticcomputing.github.io/relevance-feedback-frontend",
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
     "font-awesome": "^4.7.0",

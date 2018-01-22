@@ -3,10 +3,10 @@ import io from 'socket.io-client';
 import _ from 'lodash';
 
 const getThumbs = (items) => {
-  return _.map(_.filter(items, (item) => typeof item.thumb === 'boolean'), (item) => _.pick(item, ['url', 'thumb'])); 
+  return _.map(_.filter(items, (item) => typeof item.thumb === 'boolean'), (item) => _.pick(item, ['url', 'thumb']));
 };
 
-const socketMiddleware = (() => {
+const socketMiddleware = ((backendAddress) => {
   let socket = null;
 
   const onMessage = (actionType, store) => evt => {
@@ -32,7 +32,7 @@ const socketMiddleware = (() => {
     switch(action.type) {
       case 'SEARCH':
         if (socket === null) {
-          socket = io('http://localhost:5000');
+          socket = io(backendAddress);
           socket.on('search_status_msg', onMessage('SEARCH_STATUS_MSG', store));
           socket.on('search_words', onMessage('SEARCH_WORDS', store));
           socket.on('search_ready', onMessage('SEARCH_READY', store));
@@ -52,6 +52,6 @@ const socketMiddleware = (() => {
     }
   };
 
-})();
+});
 
 export default socketMiddleware;

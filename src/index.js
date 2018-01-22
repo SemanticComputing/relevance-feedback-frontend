@@ -10,7 +10,7 @@ import App from './components/App';
 import reducer from './reducers';
 import socketMiddleware from './middleware/socketMiddleware';
 
-const store = createStore(reducer, {}, applyMiddleware(thunk, socketMiddleware));
+const store = createStore(reducer, {}, applyMiddleware(thunk, socketMiddleware(process.env.REACT_APP_BACKEND)));
 
 render(
   <Provider store={store}>
