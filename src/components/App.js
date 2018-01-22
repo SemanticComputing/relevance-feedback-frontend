@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className="App-title">Innovaatiohaku</h1>
+        <h1 className="App-title">Topical Feedback Web Search</h1>
       </header>
       <Container>
         <InnovationSearch />
