@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Results from '../components/Results';
 import SearchForm from '../components/SearchForm';
+import SearchWords from '../components/SearchWords';
 import { updateQuery, updateThumb, doSearch } from '../actions';
 import { object, func } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
@@ -22,7 +23,7 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, search }) => {
       </Row>
       <Row>
         <Col className="col-sm-12">
-          {search.searchWords}
+          <SearchWords words={search.searchWords} />
         </Col>
       </Row>
       <Results results={search.results.items} updateThumb={updateThumb} />
