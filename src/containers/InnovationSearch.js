@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import Results from '../components/Results';
 import SearchForm from '../components/SearchForm';
 import SearchWords from '../components/SearchWords';
-import { updateQuery, updateThumb, doSearch } from '../actions';
+import { updateQuery, updateThumb, doSearch, removeWord } from '../actions';
 import { object, func } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
-let InnovationSearch = ({ updateQuery, doSearch, updateThumb, search }) => {
+let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, search }) => {
 
   return (
     <Container>
@@ -23,7 +23,7 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, search }) => {
       </Row>
       <Row>
         <Col className="col-sm-12">
-          <SearchWords words={search.searchWords} />
+          <SearchWords words={search.searchWords} removeWord={removeWord} />
         </Col>
       </Row>
       <Results results={search.results.items} updateThumb={updateThumb} />
@@ -38,6 +38,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = ({
   updateQuery,
   doSearch,
+  removeWord,
   updateThumb
 });
 
@@ -50,6 +51,7 @@ InnovationSearch.propTypes = {
   search: object,
   updateQuery: func,
   updateThumb: func,
+  removeWord: func,
   doSearch: func,
 };
 

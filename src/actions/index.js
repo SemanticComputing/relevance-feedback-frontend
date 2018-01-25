@@ -18,10 +18,16 @@ export const updateWords = (words) => ({
   words
 });
 
+export const removeWord = (word) => ({
+  type: 'REMOVE_WORD',
+  word
+});
+
 export const updateThumb = (thumb) => ({
   type: 'UPDATE_THUMB',
   thumb
 });
+
 
 export const doSearch = (search) => ({
   type: 'SEARCH',

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the search words 1`] = `
+Array [
+  <button
+    className="remove btn btn-secondary"
+    name="remove"
+    onClick={[Function]}
+    type="button"
+>
+    innovation
+     
+    <span
+        aria-hidden={true}
+        className="fa fa-times-circle"
+    />
+</button>,
+  <button
+    className="remove btn btn-secondary"
+    name="remove"
+    onClick={[Function]}
+    type="button"
+>
+    technology
+     
+    <span
+        aria-hidden={true}
+        className="fa fa-times-circle"
+    />
+</button>,
+  <button
+    className="remove btn btn-secondary"
+    name="remove"
+    onClick={[Function]}
+    type="button"
+>
+    something
+     
+    <span
+        aria-hidden={true}
+        className="fa fa-times-circle"
+    />
+</button>,
+  <button
+    className="remove btn btn-secondary"
+    name="remove"
+    onClick={[Function]}
+    type="button"
+>
+    trash
+     
+    <span
+        aria-hidden={true}
+        className="fa fa-times-circle"
+    />
+</button>,
+]
+`;

@@ -1,17 +1,18 @@
-import { findIndex } from 'lodash';
+import { findIndex, flatten, without, map } from 'lodash';
 
 const INITIAL_STATE = {
   query: '',
   status: '',
-  searchWords: '',
+  disabled: false,
+  searchWords: [],
   results: {}
 };
 
 const updateThumb = (state, action) => {
-  let result = Object.assign({}, action.thumb.result, { thumb: action.thumb.value });
-  let results = Object.assign({}, state.results);
+  let result = { ...action.thumb.result, thumb: action.thumb.value };
+  let results = { ...state.results };
   results.items[findIndex(results.items, ['url', result.url])] = result;
-  return Object.assign({}, state, { results });
+  return { ...state, results };
 };
 
 const updateStatus = (state, action) => {
@@ -20,18 +21,24 @@ const updateStatus = (state, action) => {
   return newState;
 };
 
+const getWords = (words) => {
+  return words ? flatten(map(words, (word) => word.split(' OR '))) : [];
+};
+
 const search = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'UPDATE_QUERY':
-      return Object.assign({}, state, { query: action.query });
+      return { ...state, query: action.query };
     case 'UPDATE_STATUS':
       return updateStatus(state, action);
     case 'UPDATE_RESULTS':
-      return Object.assign({}, state, { results: action.results });
+      return { ...state, results: action.results };
     case 'UPDATE_THUMB':
       return updateThumb(state, action);
     case 'UPDATE_WORDS':
-      return Object.assign({}, state, { searchWords: action.words });
+      return { ...state, searchWords: getWords(action.words) };
+    case 'REMOVE_WORD':
+      return { ...state, searchWords: without(state.searchWords, action.word) };
     default:
       return state;
   }

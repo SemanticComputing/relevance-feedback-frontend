@@ -28,18 +28,23 @@ const socketMiddleware = ((backendAddress) => {
     }
   };
 
+  const initSocket = (store) => {
+    socket = io(backendAddress);
+    socket.on('search_status_msg', onMessage('SEARCH_STATUS_MSG', store));
+    socket.on('search_words', onMessage('SEARCH_WORDS', store));
+    socket.on('search_ready', onMessage('SEARCH_READY', store));
+  };
+
   return store => next => action => {
     switch(action.type) {
       case 'SEARCH':
         if (socket === null) {
-          socket = io(backendAddress);
-          socket.on('search_status_msg', onMessage('SEARCH_STATUS_MSG', store));
-          socket.on('search_words', onMessage('SEARCH_WORDS', store));
-          socket.on('search_ready', onMessage('SEARCH_READY', store));
+          initSocket(store);
         }
         socket.emit('search', {
           data: {
             query: action.search.query,
+            words: action.search.searchWords,
             result_id: action.search.results.result_id,
             results: getThumbs(action.search.results.items)
           }

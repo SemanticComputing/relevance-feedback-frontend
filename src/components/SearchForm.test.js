@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import SearchForm from './SearchForm';
 
-const search = { query: 'query' };
+const search = { query: 'query', disabled: false };
 
 it('renders without crashing', () => {
   const doSearch = jest.fn();

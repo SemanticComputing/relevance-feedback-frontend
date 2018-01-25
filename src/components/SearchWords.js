@@ -1,18 +1,20 @@
 import React from 'react';
-import { string, func } from 'prop-types';
+import './SearchWords.css';
+import { array, func } from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import { Button } from 'reactstrap';
 import { map } from 'lodash';
 
 const SearchWords = ({ words, removeWord }) => {
-  words = words ? words.split(' OR ') : null;
   return map(words, (word) => (
-    <Button key={word} onClick={removeWord}>{word}<FontAwesome className="times-circle" name="remove" /></Button>
+    <Button className="remove" name="remove" key={word} onClick={() => removeWord(word)}>{word}
+      {' '}<FontAwesome name="times-circle" />
+    </Button>
   ));
 };
 
 SearchWords.propTypes = {
-  words: string,
+  words: array,
   removeWord: func
 };
 
