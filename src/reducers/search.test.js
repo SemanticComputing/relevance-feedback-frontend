@@ -1,3 +1,4 @@
+import { map } from 'lodash';
 import search from './search';
 
 const INITIAL_STATE = {
@@ -5,7 +6,9 @@ const INITIAL_STATE = {
   status: '',
   disabled: false,
   searchWords: [],
-  results: {}
+  results: {
+    items: []
+  }
 };
 
 
@@ -72,10 +75,75 @@ it('should handle UPDATE_RESULTS', () => {
     results
   };
 
+  const expectedItems = map(results.items, (item) => ({ ...item, thumb: undefined }));
+
   expect(search(undefined, action)).toEqual({
     ...INITIAL_STATE,
-    results
+    results: { ...results, items: expectedItems }
   });
+});
+
+it('should keep old thumbs at UPDATE_RESULTS', () => {
+  const results = {
+    result_id: 'resultId',
+    items: [
+      {
+        name: 'title',
+        url: 'http://example.fi',
+        description: 'description'
+      },
+      {
+        name: 'other title',
+        url: 'http://another.fi',
+        description: 'other description'
+      },
+    ]
+  };
+
+  const oldState = {
+    ...INITIAL_STATE,
+    results: {
+      result_id: 'resultId',
+      items: [
+        {
+          name: 'title',
+          url: 'http://example.fi',
+          description: 'description',
+          thumb: true
+        },
+        {
+          name: 'old item',
+          url: 'http://somethingelse.fi',
+          description: 'some description',
+          thumb: false
+        },
+      ]
+    }
+  };
+
+  const expectedState = {
+    ...INITIAL_STATE,
+    results: {
+      ...oldState.results,
+      items: [
+        oldState.results.items[0],
+        {
+          name: 'other title',
+          url: 'http://another.fi',
+          description: 'other description',
+          thumb: undefined
+        }
+      ]
+    }
+  };
+
+  const action = {
+    type: 'UPDATE_RESULTS',
+    results
+  };
+
+
+  expect(search(oldState, action)).toEqual(expectedState);
 });
 
 it('should handle UPDATE_THUMB', () => {
