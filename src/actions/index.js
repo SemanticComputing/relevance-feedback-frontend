@@ -13,6 +13,10 @@ export const updateResults = (results) => ({
   results
 });
 
+export const clearResultCount = () => ({
+  type: 'CLEAR_RESULT_COUNT'
+});
+
 export const updateWords = (words) => ({
   type: 'UPDATE_WORDS',
   words

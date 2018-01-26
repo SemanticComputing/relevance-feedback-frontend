@@ -1,4 +1,4 @@
-import { updateStatus, updateResults, updateWords } from '../actions';
+import { updateStatus, updateResults, updateWords, clearResultCount } from '../actions';
 import io from 'socket.io-client';
 import _ from 'lodash';
 
@@ -33,6 +33,7 @@ const socketMiddleware = ((backendAddress) => {
     socket.on('search_status_msg', onMessage('SEARCH_STATUS_MSG', store));
     socket.on('search_words', onMessage('SEARCH_WORDS', store));
     socket.on('search_ready', onMessage('SEARCH_READY', store));
+    socket.on('result_count', onMessage('UPDATE_RESULT_COUNT', store));
   };
 
   return store => next => action => {
@@ -41,6 +42,7 @@ const socketMiddleware = ((backendAddress) => {
         if (socket === null) {
           initSocket(store);
         }
+        store.dispatch(clearResultCount());
         socket.emit('search', {
           data: {
             query: action.search.query,

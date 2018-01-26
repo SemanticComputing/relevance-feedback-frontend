@@ -1,7 +1,7 @@
 import React from 'react';
 import TextInput from '../components/TextInput';
 import { object, func } from 'prop-types';
-import { Form, FormGroup, Label, Button } from 'reactstrap';
+import { Form, InputGroup, Label, Button } from 'reactstrap';
 
 const SearchForm = ({ updateQuery, doSearch, search }) => {
 
@@ -12,13 +12,11 @@ const SearchForm = ({ updateQuery, doSearch, search }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <FormGroup>
-        <Label for='search'>Haku</Label>
+      <InputGroup>
+        <Label hidden for='search'>Haku</Label>
         <TextInput id='search' value={search.query} placeholder='Haku' onChange={updateQuery} />
-      </FormGroup>
-      <FormGroup>
         <Button disabled={search.disabled} type="submit">Hae</Button>
-      </FormGroup>
+      </InputGroup>
     </Form>
   );
 };

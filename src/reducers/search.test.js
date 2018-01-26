@@ -79,7 +79,11 @@ it('should handle UPDATE_RESULTS', () => {
 
   expect(search(undefined, action)).toEqual({
     ...INITIAL_STATE,
-    results: { ...results, items: expectedItems }
+    results: {
+      ...results,
+      count: 2,
+      items: expectedItems
+    }
   });
 });
 
@@ -125,6 +129,7 @@ it('should keep old thumbs at UPDATE_RESULTS', () => {
     ...INITIAL_STATE,
     results: {
       ...oldState.results,
+      count: 2,
       items: [
         oldState.results.items[0],
         {

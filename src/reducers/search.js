@@ -32,8 +32,10 @@ const updateResults = (state, action) => {
     ...state,
     results: {
       ...action.results,
+      count: action.results.items.length,
       items: map(action.results.items, (item) => ({
-        ...item, thumb: thumbs[item.url]
+        ...item,
+        thumb: thumbs[item.url]
       }))
     }
   };
@@ -51,6 +53,8 @@ const search = (state = INITIAL_STATE, action) => {
       return updateStatus(state, action);
     case 'UPDATE_RESULTS':
       return updateResults(state, action);
+    case 'CLEAR_RESULT_COUNT':
+      return { ...state, results: { ...state.results, count: undefined } };
     case 'UPDATE_THUMB':
       return updateThumb(state, action);
     case 'UPDATE_WORDS':

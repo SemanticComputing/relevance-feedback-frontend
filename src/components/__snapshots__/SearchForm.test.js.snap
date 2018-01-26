@@ -6,10 +6,10 @@ exports[`displays the query 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="form-group"
+    className="input-group"
   >
     <label
-      className=" form-control-label"
+      className="sr-only  form-control-label"
       htmlFor="search"
     >
       Haku
@@ -21,10 +21,6 @@ exports[`displays the query 1`] = `
       type="text"
       value="query"
     />
-  </div>
-  <div
-    className="form-group"
-  >
     <button
       className="btn btn-secondary"
       disabled={false}

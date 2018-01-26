@@ -16,6 +16,11 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, search
           <SearchForm doSearch={doSearch} search={search} updateQuery={updateQuery} />
         </Col>
       </Row>
+      {search.results.count ? (
+        <Row>
+          <Col>{search.results.count} tulosta</Col>
+        </Row>
+      ) : ''}
       <Row>
         <Col className="col-sm-12">
           {search.status}
