@@ -190,12 +190,12 @@ it('should handle UPDATE_WORDS', () => {
 
   expect(search(undefined, action)).toEqual({
     ...INITIAL_STATE,
-    searchWords: ['technology', 'innovation', 'trash', 'test']
+    searchWords: [['technology'], ['innovation', 'trash'], ['test']]
   });
 });
 
 it('should handle REMOVE_WORD', () => {
-  const oldState = { ...INITIAL_STATE, searchWords: ['tech', 'trash', 'innovation'] };
+  const oldState = { ...INITIAL_STATE, searchWords: [['tech'], ['trash'], ['innovation']] };
   const action = {
     type: 'REMOVE_WORD',
     word: 'innovation'
@@ -203,6 +203,6 @@ it('should handle REMOVE_WORD', () => {
 
   expect(search(oldState, action)).toEqual({
     ...oldState,
-    searchWords: ['tech', 'trash']
+    searchWords: [['tech'], ['trash']]
   });
 });

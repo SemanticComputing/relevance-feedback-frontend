@@ -1,4 +1,4 @@
-import { findIndex, flatten, without, map, reduce } from 'lodash';
+import { findIndex, without, map, reduce, isEmpty } from 'lodash';
 
 const INITIAL_STATE = {
   query: '',
@@ -41,8 +41,18 @@ const updateResults = (state, action) => {
   };
 };
 
+const removeWord = (state, action) => {
+  let words = [];
+  for (const word of state.searchWords) {
+    const newWord = without(word, action.word);
+    if (!isEmpty(newWord))
+      words.push(newWord);
+  }
+  return { ...state, searchWords: words };
+};
+
 const getWords = (words) => {
-  return words ? flatten(map(words, (word) => word.split(' OR '))) : [];
+  return words ? map(words, (word) => word.split(' OR ')) : [];
 };
 
 const search = (state = INITIAL_STATE, action) => {
@@ -60,7 +70,7 @@ const search = (state = INITIAL_STATE, action) => {
     case 'UPDATE_WORDS':
       return { ...state, searchWords: getWords(action.words) };
     case 'REMOVE_WORD':
-      return { ...state, searchWords: without(state.searchWords, action.word) };
+      return removeWord(state, action);
     default:
       return state;
   }

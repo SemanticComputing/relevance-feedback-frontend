@@ -36,6 +36,8 @@ const socketMiddleware = ((backendAddress) => {
     socket.on('result_count', onMessage('UPDATE_RESULT_COUNT', store));
   };
 
+  const joinWords = (words) => _.map(words, (word) => word.join(' OR '));
+
   return store => next => action => {
     switch(action.type) {
       case 'SEARCH':
@@ -46,7 +48,7 @@ const socketMiddleware = ((backendAddress) => {
         socket.emit('search', {
           data: {
             query: action.search.query,
-            words: action.search.searchWords,
+            words: joinWords(action.search.searchWords),
             result_id: action.search.results.result_id,
             results: getThumbs(action.search.results.items)
           }
