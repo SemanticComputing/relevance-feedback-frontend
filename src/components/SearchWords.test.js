@@ -6,10 +6,10 @@ import SearchWords from './SearchWords';
 
 const removeWord = jest.fn();
 const words = [
-  'innovation',
-  'technology',
-  'something',
-  'trash'
+  ['innovation'],
+  ['technology'],
+  ['something'],
+  ['trash']
 ];
 
 it('renders without crashing', () => {
