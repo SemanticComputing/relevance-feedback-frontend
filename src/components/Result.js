@@ -2,6 +2,7 @@ import React from 'react';
 import { object, func } from 'prop-types';
 import { Row, Col, Button } from 'reactstrap';
 import FontAwesome from 'react-fontawesome';
+import './Result.css';
 
 const Result = ({ result, updateThumb }) => {
   const handleThumbsUp = () => updateThumb({ result, value: true });
@@ -14,7 +15,7 @@ const Result = ({ result, updateThumb }) => {
     thumbsDownStyle.color = 'red';
   }
   return (
-    <Row>
+    <Row className="result">
       <Col className="col-sm-8">
         <Row>
           <Col><a href={result.url}>{result.name}</a></Col>
