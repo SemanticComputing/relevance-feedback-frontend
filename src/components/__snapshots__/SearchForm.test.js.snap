@@ -9,7 +9,7 @@ exports[`displays the query 1`] = `
     className="input-group"
   >
     <label
-      className="sr-only  form-control-label"
+      className="sr-only "
       htmlFor="search"
     >
       Haku
