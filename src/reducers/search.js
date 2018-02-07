@@ -1,10 +1,11 @@
-import { findIndex, without, map, reduce, isEmpty } from 'lodash';
+import { findIndex, map, reduce, includes, without } from 'lodash';
 
 const INITIAL_STATE = {
   query: '',
   status: '',
   disabled: false,
   searchWords: [],
+  bannedWords: [],
   results: {
     items: []
   }
@@ -42,13 +43,13 @@ const updateResults = (state, action) => {
 };
 
 const removeWord = (state, action) => {
-  let words = [];
-  for (const word of state.searchWords) {
-    const newWord = without(word, action.word);
-    if (!isEmpty(newWord))
-      words.push(newWord);
+  let words = state.bannedWords.slice();
+  if (includes(words, action.word)) {
+    words = without(words, action.word);
+  } else {
+    words.push(action.word);
   }
-  return { ...state, searchWords: words };
+  return { ...state, bannedWords: words };
 };
 
 const getWords = (words) => {

@@ -28,7 +28,7 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, search
       </Row>
       <Row>
         <Col className="col-sm-12">
-          <SearchWords words={search.searchWords} removeWord={removeWord} />
+          <SearchWords words={search.searchWords} bannedWords={search.bannedWords} removeWord={removeWord} />
         </Col>
       </Row>
       <Results results={search.results.items} updateThumb={updateThumb} />

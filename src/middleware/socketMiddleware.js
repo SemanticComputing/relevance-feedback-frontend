@@ -3,7 +3,8 @@ import io from 'socket.io-client';
 import _ from 'lodash';
 
 const getThumbs = (items) => {
-  return _.map(_.filter(items, (item) => typeof item.thumb === 'boolean'), (item) => _.pick(item, ['url', 'thumb']));
+  return _.map(_.filter(items, (item) => typeof item.thumb === 'boolean'),
+    (item) => _.pick(item, ['url', 'thumb']));
 };
 
 const socketMiddleware = ((backendAddress) => {
@@ -49,6 +50,7 @@ const socketMiddleware = ((backendAddress) => {
           data: {
             query: action.search.query,
             words: joinWords(action.search.searchWords),
+            banned_words: action.search.bannedWords,
             result_id: action.search.results.result_id,
             results: getThumbs(action.search.results.items)
           }

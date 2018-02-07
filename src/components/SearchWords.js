@@ -3,12 +3,14 @@ import './SearchWords.css';
 import { array, func } from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import { Button } from 'reactstrap';
-import { map, flatten, uniq } from 'lodash';
+import { map, flatten, uniq, includes } from 'lodash';
 
-const SearchWords = ({ words, removeWord }) => {
+const SearchWords = ({ words, bannedWords, removeWord }) => {
+
+  const getColor = (word) => includes(bannedWords, word) ? 'danger' : '';
 
   return map(uniq(flatten(words)), (word) => (
-    <Button className="remove" name="remove" key={word} onClick={() => removeWord(word)}>{word}
+    <Button className="remove" color={getColor(word)} name="remove" key={word} onClick={() => removeWord(word)}>{word}
       {' '}<FontAwesome name="times-circle" />
     </Button>
   ));
@@ -16,6 +18,7 @@ const SearchWords = ({ words, removeWord }) => {
 
 SearchWords.propTypes = {
   words: array,
+  bannedWords: array,
   removeWord: func
 };
 
