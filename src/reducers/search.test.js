@@ -1,15 +1,5 @@
 import { map } from 'lodash';
-import search from './search';
-
-const INITIAL_STATE = {
-  query: '',
-  status: '',
-  disabled: false,
-  searchWords: [],
-  results: {
-    items: []
-  }
-};
+import search, { INITIAL_STATE } from './search';
 
 
 it('should return the initial state', () => {
@@ -195,7 +185,7 @@ it('should handle UPDATE_WORDS', () => {
 });
 
 it('should handle REMOVE_WORD', () => {
-  let oldState = { ...INITIAL_STATE, searchWords: [['tech'], ['trash'], ['innovation']] };
+  let oldState = { ...INITIAL_STATE };
   const action = {
     type: 'REMOVE_WORD',
     word: 'innovation'
@@ -203,14 +193,21 @@ it('should handle REMOVE_WORD', () => {
 
   expect(search(oldState, action)).toEqual({
     ...oldState,
-    searchWords: [['tech'], ['trash']]
+    bannedWords: ['innovation']
   });
 
-  oldState = { ...INITIAL_STATE, searchWords: [['tech'], ['trash'], ['innovation', 'something']] };
+  oldState = { ...INITIAL_STATE, bannedWords: ['innovation'] };
 
   expect(search(oldState, action)).toEqual({
     ...oldState,
-    searchWords: [['tech'], ['trash'], ['something']]
+    bannedWords: []
+  });
+
+  oldState = { ...INITIAL_STATE, bannedWords: ['something', 'innovation', 'other'] };
+
+  expect(search(oldState, action)).toEqual({
+    ...oldState,
+    bannedWords: ['something', 'other']
   });
 
 });

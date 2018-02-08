@@ -1,6 +1,6 @@
 import { findIndex, map, reduce, includes, without } from 'lodash';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   query: '',
   status: '',
   disabled: false,

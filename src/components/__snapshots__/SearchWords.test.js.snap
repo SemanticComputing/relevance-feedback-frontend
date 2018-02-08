@@ -42,7 +42,7 @@ Array [
     />
 </button>,
   <button
-    className="remove btn btn-secondary"
+    className="remove btn btn-danger"
     name="remove"
     onClick={[Function]}
     type="button"

@@ -7,7 +7,7 @@ import { map, flatten, uniq, includes } from 'lodash';
 
 const SearchWords = ({ words, bannedWords, removeWord }) => {
 
-  const getColor = (word) => includes(bannedWords, word) ? 'danger' : '';
+  const getColor = (word) => includes(bannedWords, word) ? 'danger' : 'secondary';
 
   return map(uniq(flatten(words)), (word) => (
     <Button className="remove" color={getColor(word)} name="remove" key={word} onClick={() => removeWord(word)}>{word}
