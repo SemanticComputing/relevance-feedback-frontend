@@ -1,4 +1,5 @@
 import { findIndex, map, reduce, includes, without } from 'lodash';
+import { results } from '../lib/fixtures';
 
 export const INITIAL_STATE = {
   query: '',
@@ -6,9 +7,7 @@ export const INITIAL_STATE = {
   disabled: false,
   searchWords: [],
   bannedWords: [],
-  results: {
-    items: []
-  }
+  results: results
 };
 
 const updateThumb = (state, action) => {
@@ -52,6 +51,12 @@ const removeWord = (state, action) => {
   return { ...state, bannedWords: words };
 };
 
+const describeTopic = (state, action) => {
+  if (!state.results.topic_words)
+    return { ...state };
+  return { ...state, currentTopic: state.results.topic_words[action.topic] };
+};
+
 const getWords = (words) => {
   return words ? map(words, (word) => word.split(' OR ')) : [];
 };
@@ -72,6 +77,8 @@ const search = (state = INITIAL_STATE, action) => {
       return { ...state, searchWords: getWords(action.words) };
     case 'REMOVE_WORD':
       return removeWord(state, action);
+    case 'DESCRIBE_TOPIC':
+      return describeTopic(state, action);
     default:
       return state;
   }

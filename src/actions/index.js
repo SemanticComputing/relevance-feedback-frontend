@@ -32,6 +32,10 @@ export const updateThumb = (thumb) => ({
   thumb
 });
 
+export const describeTopic = (topic) => ({
+  type: 'DESCRIBE_TOPIC',
+  topic
+});
 
 export const doSearch = (search) => ({
   type: 'SEARCH',

@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import Results from '../components/Results';
 import SearchForm from '../components/SearchForm';
 import SearchWords from '../components/SearchWords';
-import { updateQuery, updateThumb, doSearch, removeWord } from '../actions';
+import TopicWords from '../components/TopicWords';
+import { updateQuery, updateThumb, doSearch, removeWord, describeTopic } from '../actions';
 import { object, func } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
-let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, search }) => {
+let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, describeTopic, search }) => {
 
   return (
     <Container>
@@ -31,7 +32,14 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, search
           <SearchWords words={search.searchWords} bannedWords={search.bannedWords} removeWord={removeWord} />
         </Col>
       </Row>
-      <Results results={search.results.items} updateThumb={updateThumb} />
+      <Row>
+        <Col className="col-sm-10">
+          <Results results={search.results.items} updateThumb={updateThumb} describeTopic={describeTopic} />
+        </Col>
+        <Col className="col-sm-2">
+          <TopicWords topic={search.currentTopic} />
+        </Col>
+      </Row>
     </Container>
   );
 };
@@ -44,7 +52,8 @@ const mapDispatchToProps = ({
   updateQuery,
   doSearch,
   removeWord,
-  updateThumb
+  updateThumb,
+  describeTopic
 });
 
 InnovationSearch = connect(
@@ -58,6 +67,7 @@ InnovationSearch.propTypes = {
   updateThumb: func,
   removeWord: func,
   doSearch: func,
+  describeTopic: func
 };
 
 export default InnovationSearch;
