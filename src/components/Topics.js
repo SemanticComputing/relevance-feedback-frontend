@@ -1,6 +1,6 @@
 import React from 'react';
 import { array, func } from 'prop-types';
-import { map, reject } from 'lodash';
+import { map, reject, sortBy, reverse } from 'lodash';
 
 const Topics = ({ topics, describeTopic }) => {
 
@@ -26,8 +26,13 @@ const Topics = ({ topics, describeTopic }) => {
   let y = 0;
   let prevSize = 0;
 
-  const circles = map(reject(topics, (topic) => topic < 0.1), (topic, index) => {
-    const size = getSize(topic);
+  // Sort topics by "size" (i.e. relevance)
+  const sortedTopics = reverse(sortBy(map(
+    reject(topics, (topic) => topic < 0.1),
+    (topic, index) => ({ topic, index, size: getSize(topic) })
+  ), 'size'));
+
+  const circles = map(sortedTopics, ({ index, size }) => {
     y += size + prevSize + 2;
     prevSize = size;
     return <circle key={index} cx={x} cy={y} r={size} fill={topicColors[index]}
