@@ -1,44 +1,15 @@
-import { findIndex, map, reduce, includes, without } from 'lodash';
-import { results } from '../lib/fixtures';
+import { map, includes, without } from 'lodash';
 
 export const INITIAL_STATE = {
   query: '',
   status: '',
   disabled: false,
   searchWords: [],
-  bannedWords: [],
-  results: results
-};
-
-const updateThumb = (state, action) => {
-  let result = { ...action.thumb.result, thumb: action.thumb.value };
-  let results = { ...state.results };
-  results.items[findIndex(results.items, ['url', result.url])] = result;
-  return { ...state, results };
+  bannedWords: []
 };
 
 const updateStatus = (state, action) => {
-  let newState = Object.assign({}, state, { status: action.status });
-  newState.disabled = newState.status === 'Done' ? false : true;
-  return newState;
-};
-
-const updateResults = (state, action) => {
-  const thumbs = reduce(state.results.items, (res, item) => {
-    res[item.url] = item.thumb;
-    return res;
-  }, {});
-  return {
-    ...state,
-    results: {
-      ...action.results,
-      count: action.results.items.length,
-      items: map(action.results.items, (item) => ({
-        ...item,
-        thumb: thumbs[item.url]
-      }))
-    }
-  };
+  return { ...state, status: action.status };
 };
 
 const removeWord = (state, action) => {
@@ -51,12 +22,6 @@ const removeWord = (state, action) => {
   return { ...state, bannedWords: words };
 };
 
-const describeTopic = (state, action) => {
-  if (!state.results.topic_words)
-    return { ...state };
-  return { ...state, currentTopic: state.results.topic_words[action.topic] };
-};
-
 const getWords = (words) => {
   return words ? map(words, (word) => word.split(' OR ')) : [];
 };
@@ -65,20 +30,16 @@ const search = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'UPDATE_QUERY':
       return { ...state, query: action.query };
+    case 'SEARCH':
+      return { ...state, disabled: true };
+    case 'SEARCH_PROCESSING_DONE':
+      return { ...state, disabled: false };
     case 'UPDATE_STATUS':
       return updateStatus(state, action);
-    case 'UPDATE_RESULTS':
-      return updateResults(state, action);
-    case 'CLEAR_RESULT_COUNT':
-      return { ...state, results: { ...state.results, count: undefined } };
-    case 'UPDATE_THUMB':
-      return updateThumb(state, action);
     case 'UPDATE_WORDS':
       return { ...state, searchWords: getWords(action.words) };
     case 'REMOVE_WORD':
       return removeWord(state, action);
-    case 'DESCRIBE_TOPIC':
-      return describeTopic(state, action);
     default:
       return state;
   }

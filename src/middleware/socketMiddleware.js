@@ -1,4 +1,10 @@
-import { updateStatus, updateResults, updateWords, clearResultCount } from '../actions';
+import {
+  updateStatus,
+  updateResults,
+  updateWords,
+  notifyProcessingDone
+
+} from '../actions';
 import io from 'socket.io-client';
 import _ from 'lodash';
 
@@ -15,13 +21,19 @@ const socketMiddleware = ((backendAddress) => {
     const msg = evt.data;
     switch(actionType) {
       case 'SEARCH_STATUS_MSG':
-        //Dispatch an action that adds the received message to our state
+        // Dispatch an action that adds the received message to our state
         store.dispatch(updateStatus(msg));
         break;
       case 'SEARCH_READY':
+        // Search results are available
         store.dispatch(updateResults(JSON.parse(msg)));
         break;
+      case 'SEARCH_PROCESSING_DONE':
+        // Backend is ready to receive another search
+        store.dispatch(notifyProcessingDone());
+        break;
       case 'SEARCH_WORDS':
+        // Expanded search words
         store.dispatch(updateWords(msg));
         break;
       default:
@@ -34,6 +46,7 @@ const socketMiddleware = ((backendAddress) => {
     socket.on('search_status_msg', onMessage('SEARCH_STATUS_MSG', store));
     socket.on('search_words', onMessage('SEARCH_WORDS', store));
     socket.on('search_ready', onMessage('SEARCH_READY', store));
+    socket.on('search_processing_finished', onMessage('SEARCH_PROCESSING_DONE', store));
     socket.on('result_count', onMessage('UPDATE_RESULT_COUNT', store));
   };
 
@@ -45,19 +58,16 @@ const socketMiddleware = ((backendAddress) => {
         if (socket === null) {
           initSocket(store);
         }
-        store.dispatch(clearResultCount());
         socket.emit('search', {
           data: {
             query: action.search.query,
             words: joinWords(action.search.searchWords),
             banned_words: action.search.bannedWords,
-            result_id: action.search.results.result_id,
-            results: getThumbs(action.search.results.items)
+            results: getThumbs(store.getState().results.items)
           }
         });
-        break;
+        return next(action);
 
-      //This action is irrelevant to us, pass it on to the next middleware
       default:
         return next(action);
     }

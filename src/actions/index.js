@@ -13,10 +13,6 @@ export const updateResults = (results) => ({
   results
 });
 
-export const clearResultCount = () => ({
-  type: 'CLEAR_RESULT_COUNT'
-});
-
 export const updateWords = (words) => ({
   type: 'UPDATE_WORDS',
   words
@@ -40,6 +36,10 @@ export const describeTopic = (topic) => ({
 export const doSearch = (search) => ({
   type: 'SEARCH',
   search
+});
+
+export const notifyProcessingDone = () => ({
+  type: 'SEARCH_PROCESSING_DONE'
 });
 
 export const connect = () => ({

@@ -8,7 +8,7 @@ import { updateQuery, updateThumb, doSearch, removeWord, describeTopic } from '.
 import { object, func } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
-let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, describeTopic, search }) => {
+let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, describeTopic, search, results }) => {
 
   return (
     <Container>
@@ -17,9 +17,9 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, descri
           <SearchForm doSearch={doSearch} search={search} updateQuery={updateQuery} />
         </Col>
       </Row>
-      {search.results.count ? (
+      {results.count ? (
         <Row>
-          <Col>{search.results.count} tulosta</Col>
+          <Col>{results.count} tulosta</Col>
         </Row>
       ) : ''}
       <Row>
@@ -34,10 +34,10 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, descri
       </Row>
       <Row>
         <Col className="col-sm-10">
-          <Results results={search.results.items} updateThumb={updateThumb} describeTopic={describeTopic} />
+          <Results results={results.items} updateThumb={updateThumb} describeTopic={describeTopic} />
         </Col>
         <Col className="col-sm-2">
-          <TopicWords topic={search.currentTopic} />
+          <TopicWords topic={results.currentTopic} />
         </Col>
       </Row>
     </Container>
@@ -46,6 +46,7 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, descri
 
 const mapStateToProps = (state) => ({
   search: state.search,
+  results: state.results,
 });
 
 const mapDispatchToProps = ({
@@ -63,6 +64,7 @@ InnovationSearch = connect(
 
 InnovationSearch.propTypes = {
   search: object,
+  results: object,
   updateQuery: func,
   updateThumb: func,
   removeWord: func,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { array, func } from 'prop-types';
-import { map } from 'lodash';
+import { map, reject } from 'lodash';
 
 const Topics = ({ topics, describeTopic }) => {
 
@@ -26,7 +26,7 @@ const Topics = ({ topics, describeTopic }) => {
   let y = 0;
   let prevSize = 0;
 
-  const circles = map(topics, (topic, index) => {
+  const circles = map(reject(topics, (topic) => topic < 0.1), (topic, index) => {
     const size = getSize(topic);
     y += size + prevSize + 2;
     prevSize = size;

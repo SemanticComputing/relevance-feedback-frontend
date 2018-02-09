@@ -5,6 +5,14 @@ exports[`indicates a thumb down 1`] = `
   className="result row"
 >
   <div
+    className="col-sm-1 col"
+  >
+    <svg
+      height="100"
+      width="100"
+    />
+  </div>
+  <div
     className="col-sm-8 col"
   >
     <div
@@ -31,7 +39,7 @@ exports[`indicates a thumb down 1`] = `
     </div>
   </div>
   <div
-    className="col-sm-2 col"
+    className="col-sm-3 col"
   >
     <div
       className="row"
@@ -80,6 +88,14 @@ exports[`indicates a thumb up 1`] = `
   className="result row"
 >
   <div
+    className="col-sm-1 col"
+  >
+    <svg
+      height="100"
+      width="100"
+    />
+  </div>
+  <div
     className="col-sm-8 col"
   >
     <div
@@ -106,7 +122,7 @@ exports[`indicates a thumb up 1`] = `
     </div>
   </div>
   <div
-    className="col-sm-2 col"
+    className="col-sm-3 col"
   >
     <div
       className="row"
@@ -155,6 +171,14 @@ exports[`renders a result 1`] = `
   className="result row"
 >
   <div
+    className="col-sm-1 col"
+  >
+    <svg
+      height="100"
+      width="100"
+    />
+  </div>
+  <div
     className="col-sm-8 col"
   >
     <div
@@ -181,7 +205,7 @@ exports[`renders a result 1`] = `
     </div>
   </div>
   <div
-    className="col-sm-2 col"
+    className="col-sm-3 col"
   >
     <div
       className="row"
