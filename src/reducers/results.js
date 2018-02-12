@@ -1,7 +1,8 @@
 import { findIndex, map, reduce } from 'lodash';
 
 export const INITIAL_STATE = {
-  items: []
+  items: [],
+  currentTopic: {}
 };
 
 const updateThumb = (state, action) => {
@@ -17,6 +18,7 @@ const updateResults = (state, action) => {
     return res;
   }, {});
   return {
+    ...state,
     ...action.results,
     count: action.results.items.length,
     items: map(action.results.items, (item) => ({
@@ -29,7 +31,12 @@ const updateResults = (state, action) => {
 const describeTopic = (state, action) => {
   if (!state.topic_words)
     return { ...state };
-  return { ...state, currentTopic: state.topic_words[action.topic] };
+  return {
+    ...state, currentTopic: {
+      ...action.topic,
+      topicWords: state.topic_words[action.topic.topic]
+    }
+  };
 };
 
 const results = (state = INITIAL_STATE, action) => {

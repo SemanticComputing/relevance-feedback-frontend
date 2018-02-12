@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Results from '../components/Results';
 import SearchForm from '../components/SearchForm';
 import SearchWords from '../components/SearchWords';
-import TopicWords from '../components/TopicWords';
 import { updateQuery, updateThumb, doSearch, removeWord, describeTopic } from '../actions';
 import { object, func } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
@@ -23,21 +22,18 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, descri
         </Row>
       ) : ''}
       <Row>
-        <Col className="col-sm-12">
+        <Col>
           {search.status}
         </Col>
       </Row>
       <Row>
-        <Col className="col-sm-12">
+        <Col>
           <SearchWords words={search.searchWords} bannedWords={search.bannedWords} removeWord={removeWord} />
         </Col>
       </Row>
       <Row>
-        <Col className="col-sm-10">
-          <Results results={results.items} updateThumb={updateThumb} describeTopic={describeTopic} />
-        </Col>
-        <Col className="col-sm-2">
-          <TopicWords topic={results.currentTopic} />
+        <Col>
+          <Results results={results} updateThumb={updateThumb} describeTopic={describeTopic} />
         </Col>
       </Row>
     </Container>

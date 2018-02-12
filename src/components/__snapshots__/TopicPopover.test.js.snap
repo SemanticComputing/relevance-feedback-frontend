@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopicPopover renders a topic 1`] = `
+Array [
+  <h3
+    className="popover-header"
+>
+    Topiikki 
+    0
+</h3>,
+  <div
+    className="popover-body"
+>
+    <div>
+        <span
+            style={
+                Object {
+                    "fontSize": 260,
+                  }
+            }
+        >
+            word
+             
+        </span>
+        <span
+            style={
+                Object {
+                    "fontSize": 193.57,
+                  }
+            }
+        >
+            something
+             
+        </span>
+        <span
+            style={
+                Object {
+                    "fontSize": 130,
+                  }
+            }
+        >
+            innovation
+             
+        </span>
+        <span
+            style={
+                Object {
+                    "fontSize": 13,
+                  }
+            }
+        >
+            trash
+             
+        </span>
+    </div>
+</div>,
+]
+`;

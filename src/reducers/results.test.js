@@ -31,6 +31,7 @@ it('should handle UPDATE_RESULTS', () => {
   const expectedItems = map(newResults.items, (item) => ({ ...item, thumb: undefined }));
 
   expect(results(undefined, action)).toEqual({
+    ...INITIAL_STATE,
     ...newResults,
     count: 2,
     items: expectedItems

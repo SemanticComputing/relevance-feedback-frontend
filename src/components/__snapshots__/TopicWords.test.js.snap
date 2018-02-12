@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopicWords displays topic words 1`] = `
+<div>
+  <span
+    style={
+      Object {
+        "fontSize": 260,
+      }
+    }
+  >
+    word
+     
+  </span>
+  <span
+    style={
+      Object {
+        "fontSize": 193.57,
+      }
+    }
+  >
+    something
+     
+  </span>
+  <span
+    style={
+      Object {
+        "fontSize": 130,
+      }
+    }
+  >
+    innovation
+     
+  </span>
+  <span
+    style={
+      Object {
+        "fontSize": 13,
+      }
+    }
+  >
+    trash
+     
+  </span>
+</div>
+`;

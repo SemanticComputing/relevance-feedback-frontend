@@ -8,8 +8,7 @@ exports[`indicates a thumb down 1`] = `
     className="col-sm-1 col"
   >
     <svg
-      height="100"
-      width="100"
+      width="50"
     />
   </div>
   <div
@@ -91,8 +90,7 @@ exports[`indicates a thumb up 1`] = `
     className="col-sm-1 col"
   >
     <svg
-      height="100"
-      width="100"
+      width="50"
     />
   </div>
   <div
@@ -174,8 +172,7 @@ exports[`renders a result 1`] = `
     className="col-sm-1 col"
   >
     <svg
-      height="100"
-      width="100"
+      width="50"
     />
   </div>
   <div

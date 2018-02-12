@@ -5,7 +5,7 @@ import FontAwesome from 'react-fontawesome';
 import Topics from '../components/Topics';
 import './Result.css';
 
-const Result = ({ result, updateThumb, describeTopic }) => {
+const Result = ({ result, updateThumb, describeTopic, currentTopic }) => {
 
   const handleThumbsUp = () => updateThumb({ result, value: true });
   const handleThumbsDown = () => updateThumb({ result, value: false });
@@ -21,7 +21,7 @@ const Result = ({ result, updateThumb, describeTopic }) => {
   return (
     <Row className="result">
       <Col className="col-sm-1">
-        <Topics topics={result.topic} describeTopic={describeTopic} />
+        <Topics result={result} describeTopic={describeTopic} currentTopic={currentTopic} />
       </Col>
       <Col className="col-sm-8">
         <Row>
@@ -44,7 +44,8 @@ const Result = ({ result, updateThumb, describeTopic }) => {
 Result.propTypes = {
   result: object,
   updateThumb: func,
-  describeTopic: func
+  describeTopic: func,
+  currentTopic: object
 };
 
 export default Result;
