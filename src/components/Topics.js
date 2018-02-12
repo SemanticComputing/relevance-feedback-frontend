@@ -1,8 +1,9 @@
 import React from 'react';
-import { array, func } from 'prop-types';
+import { array, func, object } from 'prop-types';
 import { map, reject, sortBy, reverse } from 'lodash';
+import TopicPopover from './TopicPopover';
 
-const Topics = ({ topics, describeTopic }) => {
+const Topics = ({ result, describeTopic, currentTopic }) => {
 
   const topicColors = [
     'green',
@@ -22,34 +23,51 @@ const Topics = ({ topics, describeTopic }) => {
 
   const getSize = (topic) => topic * 30;
 
+  // Sort topics by "size" (i.e. relevance)
+  const sortedTopics = reverse(sortBy(map(
+    reject(result.topic, (topic) => topic < 0.1),
+    (topic, index) => ({ topic, index, size: getSize(topic) })
+  ), 'size'));
+
+  const isSelected = (topic) => (
+    currentTopic.result === result.url && currentTopic.topic === topic
+  );
+
   let x = 30;
   let y = 0;
   let prevSize = 0;
 
-  // Sort topics by "size" (i.e. relevance)
-  const sortedTopics = reverse(sortBy(map(
-    reject(topics, (topic) => topic < 0.1),
-    (topic, index) => ({ topic, index, size: getSize(topic) })
-  ), 'size'));
-
   const circles = map(sortedTopics, ({ index, size }) => {
     y += size + prevSize + 2;
     prevSize = size;
-    return <circle key={index} cx={x} cy={y} r={size} fill={topicColors[index]}
-      onMouseOver={() => describeTopic(index)}
-    />;
+
+    const selected = isSelected(index);
+    const color = topicColors[index];
+
+    return (
+      <g key={index}>
+        <circle id={result.url}
+          onMouseOver={() => describeTopic({ result: result.url, topic: index })}
+          onMouseLeave={() => describeTopic({})}
+          cx={x} cy={y} r={size} fill={color} stroke={selected ? 'black' : color}
+          strokeWidth="2" />
+        <TopicPopover topic={currentTopic} target={result.url}
+          isOpen={selected} />
+      </g>
+    );
   });
 
   return (
-    <svg height="100" width="100">
+    <svg>
       {circles}
     </svg>
   );
 };
 
 Topics.propTypes = {
-  topics: array,
-  describeTopic: func
+  result: object,
+  describeTopic: func,
+  currentTopic: object
 };
 
 export default Topics;

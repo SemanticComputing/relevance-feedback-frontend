@@ -1,8 +1,13 @@
 import { findIndex, map, reduce } from 'lodash';
+import { resultFixture } from '../test/fixtures';
 
 export const INITIAL_STATE = {
-  items: []
+  ...resultFixture,
+  currentTopic: {}
 };
+//export const INITIAL_STATE = {
+  //items: []
+//};
 
 const updateThumb = (state, action) => {
   let result = { ...action.thumb.result, thumb: action.thumb.value };
@@ -29,7 +34,12 @@ const updateResults = (state, action) => {
 const describeTopic = (state, action) => {
   if (!state.topic_words)
     return { ...state };
-  return { ...state, currentTopic: state.topic_words[action.topic] };
+  return {
+    ...state, currentTopic: {
+      ...action.topic,
+      topicWords: state.topic_words[action.topic.topic]
+    }
+  };
 };
 
 const results = (state = INITIAL_STATE, action) => {

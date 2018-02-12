@@ -34,10 +34,9 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, descri
       </Row>
       <Row>
         <Col className="col-sm-10">
-          <Results results={results.items} updateThumb={updateThumb} describeTopic={describeTopic} />
+          <Results results={results} updateThumb={updateThumb} describeTopic={describeTopic} />
         </Col>
         <Col className="col-sm-2">
-          <TopicWords topic={results.currentTopic} />
         </Col>
       </Row>
     </Container>
