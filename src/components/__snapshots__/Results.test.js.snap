@@ -9,8 +9,7 @@ Array [
         className="col-sm-1 col"
     >
         <svg
-            height="100"
-            width="100"
+            width="50"
         />
     </div>
     <div
@@ -85,8 +84,7 @@ Array [
         className="col-sm-1 col"
     >
         <svg
-            height="100"
-            width="100"
+            width="50"
         />
     </div>
     <div

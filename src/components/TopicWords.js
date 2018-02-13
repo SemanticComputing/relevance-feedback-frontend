@@ -1,22 +1,21 @@
 import React from 'react';
 import { array } from 'prop-types';
 import { map } from 'lodash';
-import { Row, Col } from 'reactstrap';
 
 const TopicWords = ({ topic }) => {
 
-  const getSize = (word) => word[1] * 1000;
+  const getSize = (word) => word[1] * 1300;
 
   const words = map(topic, (word) => (
-    <Col key={word}>
-      <span style={{ fontSize: getSize(word) }}>{word[0]}</span>
-    </Col>
+    <span key={word[0]} style={{ fontSize: getSize(word) }}>
+      {word[0]}{' '}
+    </span>
   ));
 
   return (
-    <Row>
+    <div>
       {words}
-    </Row>
+    </div>
   );
 };
 

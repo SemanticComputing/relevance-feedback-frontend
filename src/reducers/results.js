@@ -1,13 +1,9 @@
 import { findIndex, map, reduce } from 'lodash';
-import { resultFixture } from '../test/fixtures';
 
 export const INITIAL_STATE = {
-  ...resultFixture,
+  items: [],
   currentTopic: {}
 };
-//export const INITIAL_STATE = {
-  //items: []
-//};
 
 const updateThumb = (state, action) => {
   let result = { ...action.thumb.result, thumb: action.thumb.value };
@@ -22,6 +18,7 @@ const updateResults = (state, action) => {
     return res;
   }, {});
   return {
+    ...state,
     ...action.results,
     count: action.results.items.length,
     items: map(action.results.items, (item) => ({

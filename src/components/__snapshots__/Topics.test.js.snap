@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Topics renders topics 1`] = `
+<svg
+  width="50"
+>
+  <g>
+    <circle
+      cx="50%"
+      cy={10}
+      fill="green"
+      id="http://example.fi-0"
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      r={6}
+      stroke="green"
+      strokeWidth="2"
+    />
+  </g>
+  <g>
+    <circle
+      cx="50%"
+      cy={24.467}
+      fill="red"
+      id="http://example.fi-1"
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      r={4.4670000000000005}
+      stroke="red"
+      strokeWidth="2"
+    />
+  </g>
+  <g>
+    <circle
+      cx="50%"
+      cy={35.934}
+      fill="yellow"
+      id="http://example.fi-2"
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      r={3}
+      stroke="yellow"
+      strokeWidth="2"
+    />
+  </g>
+</svg>
+`;

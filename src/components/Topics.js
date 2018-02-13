@@ -1,5 +1,5 @@
 import React from 'react';
-import { array, func, object } from 'prop-types';
+import { func, object } from 'prop-types';
 import { map, reject, sortBy, reverse } from 'lodash';
 import TopicPopover from './TopicPopover';
 
@@ -21,7 +21,7 @@ const Topics = ({ result, describeTopic, currentTopic }) => {
     'burlywood',
   ];
 
-  const getSize = (topic) => topic * 30;
+  const getSize = (topic) => Math.min(24, topic * 30);
 
   // Sort topics by "size" (i.e. relevance)
   const sortedTopics = reverse(sortBy(map(
@@ -33,41 +33,43 @@ const Topics = ({ result, describeTopic, currentTopic }) => {
     currentTopic.result === result.url && currentTopic.topic === topic
   );
 
-  let x = 30;
+  let x = '50%';
   let y = 0;
   let prevSize = 0;
 
   const circles = map(sortedTopics, ({ index, size }) => {
-    y += size + prevSize + 2;
+    y += size + prevSize + 4;
     prevSize = size;
 
     const selected = isSelected(index);
     const color = topicColors[index];
 
+    const cid = `${result.url}-${index}`;
+
     return (
       <g key={index}>
-        <circle id={result.url}
+        <circle id={cid}
           onMouseOver={() => describeTopic({ result: result.url, topic: index })}
           onMouseLeave={() => describeTopic({})}
           cx={x} cy={y} r={size} fill={color} stroke={selected ? 'black' : color}
           strokeWidth="2" />
-        <TopicPopover topic={currentTopic} target={result.url}
+        <TopicPopover topic={currentTopic} target={cid}
           isOpen={selected} />
       </g>
     );
   });
 
   return (
-    <svg>
+    <svg width="50">
       {circles}
     </svg>
   );
 };
 
 Topics.propTypes = {
-  result: object,
-  describeTopic: func,
-  currentTopic: object
+  result: object.isRequired,
+  describeTopic: func.isRequired,
+  currentTopic: object.isRequired
 };
 
 export default Topics;
