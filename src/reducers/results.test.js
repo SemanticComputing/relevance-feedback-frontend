@@ -8,7 +8,6 @@ it('should return the initial state', () => {
 
 it('should handle UPDATE_RESULTS', () => {
   const newResults = {
-    result_id: 'resultId',
     items: [
       {
         name: 'title',
@@ -40,7 +39,6 @@ it('should handle UPDATE_RESULTS', () => {
 
 it('should keep old thumbs at UPDATE_RESULTS', () => {
   const newResults = {
-    result_id: 'resultId',
     items: [
       {
         name: 'title',
@@ -57,7 +55,6 @@ it('should keep old thumbs at UPDATE_RESULTS', () => {
 
   const oldState = {
     ...INITIAL_STATE,
-    result_id: 'resultId',
     items: [
       {
         name: 'title',
@@ -109,7 +106,6 @@ it('should handle UPDATE_THUMB', () => {
     description: 'other description'
   };
   const newResults = {
-    result_id: 'resultId',
     items: [
       result,
       otherResult
