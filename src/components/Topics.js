@@ -24,10 +24,10 @@ const Topics = ({ result, describeTopic, currentTopic }) => {
   const getSize = (topic) => Math.min(24, topic * 30);
 
   // Sort topics by "size" (i.e. relevance)
-  const sortedTopics = reverse(sortBy(map(
-    reject(result.topic, (topic) => topic < 0.1),
-    (topic, index) => ({ topic, index, size: getSize(topic) })
-  ), 'size'));
+  const sortedTopics = reverse(sortBy(
+    reject(map(result.topic, (topic, index) => ({ topic, index, size: getSize(topic) })),
+      (topic) => topic.topic < 0.1),
+    'size'));
 
   const isSelected = (topic) => (
     currentTopic.result === result.url && currentTopic.topic === topic
