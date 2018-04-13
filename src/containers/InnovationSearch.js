@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Results from '../components/Results';
 import SearchForm from '../components/SearchForm';
 import SearchWords from '../components/SearchWords';
-import { updateQuery, updateThumb, doSearch, removeWord, describeTopic } from '../actions';
+import { updateQuery, updateSearchType, updateThumb, doSearch, removeWord, describeTopic } from '../actions';
 import { object, func } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
@@ -13,7 +13,8 @@ let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, descri
     <Container>
       <Row>
         <Col>
-          <SearchForm doSearch={doSearch} search={search} updateQuery={updateQuery} />
+          <SearchForm doSearch={doSearch} search={search} updateQuery={updateQuery}
+            updateSearchType={updateSearchType} />
         </Col>
       </Row>
       {results.count ? (

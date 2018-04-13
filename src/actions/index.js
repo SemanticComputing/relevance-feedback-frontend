@@ -3,6 +3,11 @@ export const updateQuery = (query) => ({
   query
 });
 
+export const updateSearchType = (searchType) => ({
+  type: 'UPDATE_SEARCH_TYPE',
+  searchType
+});
+
 export const updateStatus = (status) => ({
   type: 'UPDATE_STATUS',
   status

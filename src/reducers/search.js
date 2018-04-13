@@ -2,6 +2,7 @@ import { map, includes, without } from 'lodash';
 
 export const INITIAL_STATE = {
   query: '',
+  type: 'news',
   status: '',
   disabled: false,
   searchWords: [],
@@ -30,6 +31,8 @@ const search = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'UPDATE_QUERY':
       return { ...state, query: action.query };
+    case 'UPDATE_SEARCH_TYPE':
+      return { ...state, type: action.searchType };
     case 'SEARCH':
       return { ...state, disabled: true };
     case 'SEARCH_PROCESSING_DONE':

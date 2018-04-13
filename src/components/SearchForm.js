@@ -1,9 +1,9 @@
 import React from 'react';
 import TextInput from '../components/TextInput';
 import { object, func } from 'prop-types';
-import { Form, InputGroup, Label, Button } from 'reactstrap';
+import { Form, FormGroup, Input, InputGroup, Label, Button } from 'reactstrap';
 
-const SearchForm = ({ updateQuery, doSearch, search }) => {
+const SearchForm = ({ updateQuery, updateSearchType, doSearch, search }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,6 +17,20 @@ const SearchForm = ({ updateQuery, doSearch, search }) => {
         <TextInput id='search' value={search.query} placeholder='Haku' onChange={updateQuery} />
         <Button disabled={search.disabled} type="submit">Hae</Button>
       </InputGroup>
+      <FormGroup>
+        <FormGroup check inline>
+          <Label check>
+            <Input type="radio" name="search-type" defaultChecked={search.type === 'news'} onClick={() => updateSearchType('news')} />{' '}
+            Yle-uutiset
+          </Label>
+        </FormGroup>
+        <FormGroup check inline>
+          <Label check>
+            <Input type="radio" name="search-type" defaultChecked={search.type === 'net'} onClick={() => updateSearchType('net')} />{' '}
+            Google
+          </Label>
+        </FormGroup>
+      </FormGroup>
     </Form>
   );
 };
@@ -24,6 +38,7 @@ const SearchForm = ({ updateQuery, doSearch, search }) => {
 SearchForm.propTypes = {
   search: object,
   updateQuery: func,
+  updateSearchType: func,
   doSearch: func,
 };
 

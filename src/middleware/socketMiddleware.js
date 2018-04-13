@@ -59,6 +59,7 @@ const socketMiddleware = ((backendAddress) => {
           initSocket(store);
         }
         socket.emit('search', {
+          type: action.search.type,
           data: {
             query: action.search.query,
             words: joinWords(action.search.searchWords),
