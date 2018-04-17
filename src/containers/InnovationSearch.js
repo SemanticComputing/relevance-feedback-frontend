@@ -7,7 +7,9 @@ import { updateQuery, updateSearchType, updateThumb, doSearch, removeWord, descr
 import { object, func } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
-let InnovationSearch = ({ updateQuery, doSearch, updateThumb, removeWord, describeTopic, search, results }) => {
+let InnovationSearch = ({
+  updateQuery, updateSearchType, doSearch, updateThumb, removeWord, describeTopic, search, results
+}) => {
 
   return (
     <Container>
@@ -48,6 +50,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = ({
   updateQuery,
+  updateSearchType,
   doSearch,
   removeWord,
   updateThumb,
@@ -63,6 +66,7 @@ InnovationSearch.propTypes = {
   search: object,
   results: object,
   updateQuery: func,
+  updateSearchType: func,
   updateThumb: func,
   removeWord: func,
   doSearch: func,
