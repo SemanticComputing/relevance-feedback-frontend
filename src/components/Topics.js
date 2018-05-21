@@ -5,28 +5,16 @@ import TopicPopover from './TopicPopover';
 
 const Topics = ({ result, describeTopic, currentTopic }) => {
 
-  const topicColors = [
-    'green',
-    'red',
-    'yellow',
-    'blue',
-    'teal',
-    'orange',
-    'black',
-    'purple',
-    'fuchsia',
-    'brown',
-    'darkgrey',
-    'olive',
-    'burlywood',
-  ];
+  // Based on https://stackoverflow.com/a/8134122/4321262
+  const getTopicColor = (topic) =>
+    `#${Math.floor((Math.abs(Math.sin(topic) * 16777215)) % 16777215).toString(16).padStart(6, 0)}`;
 
-  const getSize = (topic) => Math.min(24, topic * 30);
+  const getSize = (topic) => Math.min(24, Math.max(5, topic * 30));
 
   // Sort topics by "size" (i.e. relevance)
   const sortedTopics = reverse(sortBy(
     reject(map(result.topic, (topic, index) => ({ topic, index, size: getSize(topic) })),
-      (topic) => topic.topic < 0.1),
+      (topic) => topic.topic < 0.05),
     'size'));
 
   const isSelected = (topic) => (
@@ -42,7 +30,7 @@ const Topics = ({ result, describeTopic, currentTopic }) => {
     prevSize = size;
 
     const selected = isSelected(index);
-    const color = topicColors[index];
+    const color = getTopicColor(index);
 
     const cid = `${result.url}-${index}`;
 
