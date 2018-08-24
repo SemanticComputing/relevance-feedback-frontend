@@ -1,5 +1,9 @@
 # Relevance Feedback Frontend
 
+## Install
+
+
+
 ## Run
 
 Assuming `http://localhost:5001` is the address of the backend (change accordingly).

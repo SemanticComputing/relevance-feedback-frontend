@@ -1,10 +1,10 @@
 import React from 'react';
 import { array } from 'prop-types';
-import { map } from 'lodash';
+import { map, min } from 'lodash';
 
 const TopicWords = ({ topic }) => {
 
-  const getSize = (word) => word[1] * 1300;
+  const getSize = (word) => min([8 + word[1] * 1000, 60]);
 
   const words = map(topic, (word) => (
     <span key={word[0]} style={{ fontSize: getSize(word) }}>

@@ -35,7 +35,37 @@ pre.pre-x-scrollable {
     flex-basis: 100%!important;
 }
 
+.form-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.search-status {
+  /* font-size: large; */
+  font-weight: bold;
+  background-color: #EEE;
+  /* padding: 20px; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.done {
+  color: green;
+}
+
+.topic-modeling {
+  color: orange;
+}
+
+.scraping {
+  color: orange;
+}
+
+.searching {
+  color: orange;
 }

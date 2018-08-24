@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchForm.css';
 import TextInput from '../components/TextInput';
 import { object, func } from 'prop-types';
 import { Form, FormGroup, Input, InputGroup, Label, Button } from 'reactstrap';
@@ -15,7 +16,8 @@ const SearchForm = ({ updateQuery, updateSearchType, doSearch, search }) => {
       <InputGroup>
         <Label hidden for='search'>Haku</Label>
         <TextInput id='search' value={search.query} placeholder='Haku' onChange={updateQuery} />
-        <Button disabled={search.disabled} type="submit">Hae</Button>
+        <Button disabled={search.disabled} type="submit"
+        className={!search.disabled ? 'activeButton' : 'disabledButton'}>Hae</Button>
       </InputGroup>
       <FormGroup>
         <FormGroup check inline>

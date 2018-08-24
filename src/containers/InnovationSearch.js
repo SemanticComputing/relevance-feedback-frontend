@@ -6,11 +6,11 @@ import SearchWords from '../components/SearchWords';
 import { updateQuery, updateSearchType, updateThumb, doSearch, removeWord, describeTopic } from '../actions';
 import { object, func } from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
+import { toLower, replace } from 'lodash';
 
 let InnovationSearch = ({
   updateQuery, updateSearchType, doSearch, updateThumb, removeWord, describeTopic, search, results
 }) => {
-
   return (
     <Container>
       <Row>
@@ -25,7 +25,7 @@ let InnovationSearch = ({
         </Row>
       ) : ''}
       <Row>
-        <Col>
+        <Col className={['search-status', replace(toLower(search.status), ' ', '-')].join(' ')}>
           {search.status}
         </Col>
       </Row>
