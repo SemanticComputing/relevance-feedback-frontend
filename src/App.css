@@ -69,3 +69,11 @@ pre.pre-x-scrollable {
 .searching {
   color: orange;
 }
+
+.help {
+  float: right;
+}
+
+h1 {
+    display: inline;
+}
