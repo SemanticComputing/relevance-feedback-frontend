@@ -15,7 +15,7 @@ const SearchForm = ({ updateQuery, updateSearchType, doSearch, search }) => {
     <Form onSubmit={handleSubmit}>
       <InputGroup>
         <Label hidden for='search'>Haku</Label>
-        <TextInput id='search' value={search.query} placeholder='Haku' onChange={updateQuery} />
+        <TextInput id='search' disabled={search.status} value={search.query} placeholder='Haku' onChange={updateQuery} />
         <Button disabled={search.disabled} type="submit"
         className={!search.disabled ? 'activeButton' : 'disabledButton'}>Hae</Button>
       </InputGroup>
