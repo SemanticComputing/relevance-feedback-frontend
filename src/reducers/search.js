@@ -2,7 +2,7 @@ import { map, includes, without } from 'lodash';
 
 export const INITIAL_STATE = {
   query: '',
-  type: 'news',
+  type: 'net',
   status: '',
   disabled: false,
   searchWords: [],

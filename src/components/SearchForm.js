@@ -22,7 +22,7 @@ const SearchForm = ({ updateQuery, updateSearchType, doSearch, search }) => {
       <FormGroup>
         <FormGroup check inline>
           <Label check>
-            <Input type="radio" name="search-type" defaultChecked={search.type === 'news'} onClick={() => updateSearchType('news')} />{' '}
+            <Input disabled="disabled" type="radio" name="search-type" defaultChecked={search.type === 'news'} onClick={() => updateSearchType('news')} />{' '}
             Yle-uutiset
           </Label>
         </FormGroup>
